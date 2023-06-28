@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Barlow+Condensed:wght@100&family=Fuzzy+Bubbles&family=Glory:wght@100&family=Josefin+Sans:ital,wght@0,300;1,300&family=Roboto+Slab:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color: #181a19;
+    min-height: 100vh;
+    overflow-x: hidden;
+    border: gray 2px solid;
+}
+main{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2rem;
+}
+main .todas-n{
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.contenedor-habitaciones{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 1rem;
+    object-fit: cover;
+    
+}
+.habitacion-imagen{
+    width: 100%;
+    height: 80%;
+    border-radius: 1rem;
+    object-fit: cover; 
+    transition: all 0.8s ease;
+}
+.habitacion-imagen:hover{
+    transition: all 0.6s ease;
+    filter: brightness(30%);
+}
+.habitacion-detalles{
+    font-size: 13px;
+    background-color:white;
+    color: gray;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    margin-top: -4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.30rem; 
+    text-transform: uppercase;  
+}
+.habitacion-precio{
+    font-weight: bold;
+}
+
+header{
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.05);
+}
+.logo{
+    color:white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 0.1em;   
+}
+.group{
+    display: flex;
+    align-items: center;
+}
+header ul{ 
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+header ul li{
+    list-style: none;
+
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Agregamos esta propiedad para centrar horizontalmente los botones */
+    margin-top: 20px;
+    
+  }
+  
+  .buttons button {
+    font-family: sans-serif;
+    font-size: 1em;
+    border: 3px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 10px 16px; /* Aumentamos el padding para hacer los botones más grandes */
+    margin-right: 10px;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.8s ease;
+    
+  }
+  .buttons button.active {
+    background-color: #74e7a2;
+    color: #fff;
+    transition: all 0.8s ease;
+  }
+  .buttons button.active:hover{
+    transition: all 0.6s ease;
+    filter: brightness(30%);
+  }
+  .buttons button:hover:nth-of-type(2){
+    transition: all 0.6s ease;
+    filter: brightness(30%);
+  }
+  .buttons button:hover:nth-of-type(3){
+    transition: all 0.6s ease;
+    filter: brightness(30%);
+  }
+ 
+
+  
+header ul li a{
+    position: relative;
+    text-decoration: none;
+    font-size: 1em ;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+header ul li a::before{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+}
+header ul li a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left ;
+}
+header .search{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    z-index: 10;
+    cursor: pointer;
+}
+.searchBox{
+    position: absolute;
+    right: -100%;
+    width:100% ;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    transition: 0.5 ease-in-out;
+}
+.searchBox.active{
+    right: 0;
+
+}
+
+.searchBox input{
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 50px;
+    color: #333;
+    font-size:1.25em ;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 10px;
+}
+.searchBtn{
+    color: white;
+    position: relative;
+    left: 30px;
+    top: 2.5px;
+    transition: 0.5s ease-in-out;
+}
+.searchBtn.active{
+    color: black;
+    left: 0;
+}
+.closeBtn{
+    color: black;
+    opacity: 0;
+    visibility: hidden;
+}
+.closeBtn.active{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
+    scale: 1;
+}
+.menuToggle{
+    position: relative;
+    display: none;
+}
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+  }
+footer .texto-footer{
+text-align: center;
+font-size: 18px;
+color: black;
+margin: 10px
+}
+
+/*responsive */ 
+@media (max-width: 1100px){
+   
+    
+    .menuToggle{
+        position: relative;
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+        transform: translate(20px);
+        z-index: 10;
+      }
+    header .navegacion{
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        left: 100%;
+    }
+    header.open .navegacion{
+        top: 80px;
+        opacity: 1;
+        visibility: visible;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: gray;
+        width: 100%;
+        height: calc(100vh - 80px);
+        padding: 40px;
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+
+    }
+    header.open .navegacion li a{
+        font-size: 1.25em;
+    }
+    .hide{
+        display: none;
+    }
+    .contenedor-habitaciones{
+        display: grid;
+        grid-template-columns:repeat(3,1fr);
+        gap: 1rem;
+        object-fit: cover;
+    }
+    .habitacion-detalles{
+        font-family: rob;
+        font-size: 12px;
+        background-color:white;
+        color: gray;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Agregamos esta propiedad para centrar horizontalmente los botones */
+        margin-top: 20px;
+        
+      }
+      
+      .buttons button {
+        font-family: sans-serif;
+        font-size: 1em;
+        border: 3px solid #000;
+        box-shadow: rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        padding: 10px 16px; /* Aumentamos el padding para hacer los botones más grandes */
+        margin-right: 10px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.8s ease;
+        
+      }
+      .buttons button.active {
+        background-color: #74e7a2;
+        color: #fff;
+        transition: all 0.8s ease;
+      }
+      .buttons button.active:hover{
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+      .buttons button:hover:nth-of-type(2){
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+      .buttons button:hover:nth-of-type(3){
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+    
+}
+
+@media (max-width: 800px){
+    .menuToggle{
+        position: relative;
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+        transform: translate(20px);
+        z-index: 10;
+      }
+    header .navegacion{
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        left: 100%;
+    }
+    header.open .navegacion{
+        top: 80px;
+        opacity: 1;
+        visibility: visible;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        background: gray;
+        width: 100%;
+        height: calc(100vh - 80px);
+        padding: 40px;
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+
+    }
+    header.open .navegacion li a{
+        font-size: 1.25em;
+    }
+    .hide{
+        display: none;
+    }
+    .contenedor-habitaciones{
+        display: grid;
+        grid-template-columns:repeat(2,1fr);
+        gap: 4rem;
+        object-fit: cover;
+    }
+    .habitacion-detalles{
+        font-size: 12px;
+        background-color:white;
+        color: gray;
+        padding: 0.7rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    main .todas-n{
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: lighter;
+        color: black;
+        margin-bottom: 1rem;
+    }
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Agregamos esta propiedad para centrar horizontalmente los botones */
+        margin-top: 20px;
+        
+      }
+      
+      .buttons button{
+        font-family: sans-serif;
+        font-size: 1em;
+        border: 3px solid #000;
+        box-shadow: rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        padding: 10px 16px; /* Aumentamos el padding para hacer los botones más grandes */
+        margin-right: 10px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.8s ease;
+        
+      }
+      .buttons button.active {
+        background-color: #74e7a2;
+        color: #fff;
+        transition: all 0.8s ease;
+      }
+      .buttons button.active:hover{
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+      .buttons button:hover:nth-of-type(2){
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+      .buttons button:hover:nth-of-type(3){
+        transition: all 0.6s ease;
+        filter: brightness(30%);
+      }
+     
+}
+
+
+
+/*Login */ 
+.body_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(/imagenes/habitacion3.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background-color: transparent;
+    border: 2px solid rgba(225,255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height .2s ease;
+}
+
+.wrapper.active{
+    height: 750px;
+}
+
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login{
+    transition: transform 0.18s ease;
+    transform: translateX(0);
+}
+.wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.registrarse{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+.wrapper.active .form-box.registrarse{
+    transition: transform 0.18s ease;
+    transform: translateX(0);
+}
+
+.form-box h2{
+    font-size: 2em;
+    color:#162938;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50% ;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: black;
+    line-height:57px ;
+}
+
+.remember-forgot{
+    font-size: .9em;
+    color: black;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: black;
+    margin-right:3px ;
+}
+
+.remember-forgot a{
+    color: black;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    color: black;
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1em;
+    color:#fff;
+    font-weight: 600;
+}
+
+.login-register{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a{
+    color: #162938;
+    font-size: 1em;
+    text-decoration: none;
+}
+.login-register a{
+    font-weight: 600;
+}
+
+.remember-forgot{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 550;
+    margin: 25px 0 10px;
+}
+
+.registro-logeo{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0 10px;
+}
+
+.registro-logeo p a{
+    text-decoration: none;
+    color: #162938;
+    font-weight: 600;
+
+}
+
+.remember-forgot a{
+    text-decoration: none;
+}
+
+.clase1 {
+    color: #162938;
+    font-size: 1em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/*Vista del producto*/
